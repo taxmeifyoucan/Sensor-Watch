@@ -29,14 +29,21 @@
 
 const watch_face_t watch_faces[] = {
     simple_clock_face,
-    world_clock_face,
-    sunrise_sunset_face,
-    moon_phase_face,
-    stopwatch_face,
-    preferences_face,
-    set_time_face,
     thermistor_readout_face,
-    voltage_face
+    sunrise_sunset_face,
+    alarm_face,
+    dual_timer_face,
+    toss_up_face,
+    moon_phase_face,
+    invaders_face,
+    morsecalc_face,
+    databank_face,
+    simple_clock_bin_led_face,
+    set_time_hackwatch_face,
+    finetune_face,
+    nanosec_face,
+    preferences_face
+
 };
 
 #define MOVEMENT_NUM_FACES (sizeof(watch_faces) / sizeof(watch_face_t))
@@ -47,9 +54,53 @@ const watch_face_t watch_faces[] = {
  * Some folks also like to use this to hide the preferences and time set faces from the normal rotation.
  * If you don't want any faces to be excluded, set this to 0 and a long Mode press will have no effect.
  */
-#define MOVEMENT_SECONDARY_FACE_INDEX (MOVEMENT_NUM_FACES - 2) // or (0)
+#define MOVEMENT_SECONDARY_FACE_INDEX (MOVEMENT_NUM_FACES - 4) // or (0)
 
 /* Custom hourly chime tune. Check movement_custom_signal_tunes.h for options. */
-#define SIGNAL_TUNE_DEFAULT
+#define SIGNAL_TUNE_MARIO_THEME
+
+/* Determines the intensity of the led colors
+ * Set a hex value 0-15 with 0x0 being off and 0xF being max intensity
+ */
+#define MOVEMENT_DEFAULT_GREEN_COLOR 0xF
+#define MOVEMENT_DEFAULT_RED_COLOR 0x0
+
+/* Set to true for 24h mode or false for 12h mode */
+#define MOVEMENT_DEFAULT_24H_MODE true
+
+/* Enable or disable the sound on mode button press */
+#define MOVEMENT_DEFAULT_BUTTON_SOUND true
+
+/* Set the timeout before switching back to the main watch face
+ * Valid values are:
+ * 0: 60 seconds
+ * 1: 2 minutes
+ * 2: 5 minutes
+ * 3: 30 minutes
+ */
+#define MOVEMENT_DEFAULT_TIMEOUT_INTERVAL 0
+
+/* Set the timeout before switching to low energy mode
+ * Valid values are:
+ * 0: Never
+ * 1: 1 hour
+ * 2: 2 hours
+ * 3: 6 hours
+ * 4: 12 hours
+ * 5: 1 day
+ * 6: 2 days
+ * 7: 7 days
+ */
+#define MOVEMENT_DEFAULT_LOW_ENERGY_INTERVAL 1
+
+/* Set the led duration
+ * Valid values are:
+ * 0: No LED
+ * 1: 1 second
+ * 2: 3 seconds
+ * 3: 5 seconds
+ */
+#define MOVEMENT_DEFAULT_LED_DURATION 1
+
 
 #endif // MOVEMENT_CONFIG_H_
